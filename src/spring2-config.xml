@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="toolA" class="net.imwork.zhanlong.spring2.ConcreteToolA"/>
+    <bean id="toolB" class="net.imwork.zhanlong.spring2.ConcreteToolB"/>
+
+    <!-- spring注入方式：采用set方式(要求Chinese类必须有一个无参的构造函数)   常用-->
+    <bean id="chinese2" class="net.imwork.zhanlong.spring2.Chinese">
+        <property name="tool" ref="toolB"/>
+    </bean>
+
+    <!-- spring注入方式：采用构造方法方式(要求Chinese类中有相应的构造方法)  不常用 -->
+    <!--  这种注入方法要求Chinese类必须有相应的构造方法  -->
+    <bean id="chinese2_1" class="net.imwork.zhanlong.spring2.Chinese">
+        <constructor-arg ref="toolA"/>
+    </bean>
+
+    <!--  对于bean的autowire属性来说，推荐使用default默认值，即手工完成所有属性的注意工作-->
+    <!--<bean id="chinese2_2" class="net.imwork.zhanlong.spring2.Chinese" autowire="byType"/>--> <!--不建议这样注入-->
+
+
+</beans>
