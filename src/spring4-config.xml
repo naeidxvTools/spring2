@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="tool" class="net.imwork.zhanlong.spring4.ConcreteTool"/>
+
+    <bean id="chinese4" class="net.imwork.zhanlong.spring4.Chinese"> <!--这里有一个scope属性,常用的值prototype和singleton-->
+        <property name="list">
+            <list>
+                <value>ListValue1</value>
+                <value>ListValue2</value>
+                <value>ListValue3</value>
+            </list>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="map1" value="value1"/>
+                <entry key="map2" value="value2"/>
+                <entry key="map3" value="value3"/>
+            </map>
+        </property>
+
+        <property name="set">
+            <set>
+                <value>setValue1</value>
+                <value>setValue2</value>
+                <value>setValue3</value>
+                <ref bean="tool"/> <!-- 注入对象的第一种方法 -->
+                <ref bean="tool"/>
+                <bean class="net.imwork.zhanlong.spring4.ConcreteTool"/> <!-- 注入对象的第二种方法 -->
+            </set>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="prop1">value1</prop>
+                <prop key="prop2">value2</prop>
+                <prop key="prop3">value3</prop>
+            </props>
+        </property>
+
+
+    </bean>
+</beans>

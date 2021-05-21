@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="tool5" class="net.imwork.zhanlong.spring5.ConcreteTool"/>
+
+    <!-- 这里推荐使用init-method="init" destroy-method="close"属性设置初始化方法和销毁方法，-->
+    <!-- 不推荐在类中实现InitializingBean, DisposableBean两个接口 -->
+    <bean id="chinese5" class="net.imwork.zhanlong.spring5.Chinese" init-method="init" destroy-method="close">
+        <property name="tool" ref="tool5"/>
+    </bean>
+
+
+</beans>

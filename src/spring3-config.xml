@@ -5,9 +5,16 @@
 
 
     <bean id="toolA_" class="net.imwork.zhanlong.spring3.ConcreteToolA">
-        <property name="name" value="zhanlong"/>
+        <property name="name" value="工具A"/>
     </bean>
-    <bean id="toolB_" class="net.imwork.zhanlong.spring3.ConcreteToolB"/>
+    <bean id="toolB_" class="net.imwork.zhanlong.spring3.ConcreteToolB">
+        <property name="name" value="工具B"/>
+        <!--  这里的值也可以采用下面的方式赋值，建议放到标签的属性里面。 -->
+        <!--<property name="name">
+               <value>工具B</value>
+            </property>
+        -->
+    </bean>
 
     <!--  对于bean的autowire属性来说，推荐使用default默认值，即手工完成所有属性的注意工作-->
     <!--  <bean id="chinese3" class="net.imwork.zhanlong.spring3.Chinese" autowire="byType"/> --> <!--不建议这样注入-->

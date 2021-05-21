@@ -9,18 +9,19 @@ public class ConcreteToolA implements Tool
     @Override
     public void realWork()
     {
+        System.out.println(this.name);
         System.out.println("from concreteToolA");
     }
 
     @Override
     public String getName()
     {
-        return null;
+        return name;
     }
 
     @Override
     public void setName(String name)
     {
-
+        this.name = name;
     }
 }
