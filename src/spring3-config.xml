@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="toolA_" class="net.imwork.zhanlong.spring3.ConcreteToolA">
+        <property name="name" value="zhanlong"/>
+    </bean>
+    <bean id="toolB_" class="net.imwork.zhanlong.spring3.ConcreteToolB"/>
+
+    <!--  对于bean的autowire属性来说，推荐使用default默认值，即手工完成所有属性的注意工作-->
+    <!--  <bean id="chinese3" class="net.imwork.zhanlong.spring3.Chinese" autowire="byType"/> --> <!--不建议这样注入-->
+
+    <bean id="chinese3" class="net.imwork.zhanlong.spring3.Chinese">
+        <property name="tool" ref="toolA_"/>
+    </bean>
+
+</beans>
