@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+<!--
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+-->
+
+    <!--
+        AspectJ语法:
+        execution([修饰符] 返回类型 [声明类型] 方法名称(参数类型) [异常类型])   ,其中用的最多的是通配符:*  []为可选的
+        例子：
+        1.执行任意的public方法
+            execution(public * * (..))
+        2.执行任意以set开头的方法
+            execution(* set*(..))
+        3.执行任何至少有一个参数，且第一个参数为java.lang.String类型的方法
+            execution(* * (java.lang.String, ..))
+        4.执行Service类中的任何方法
+            execution(* net.imwork.zhanlong.Service.*(..))
+        5.执行test包及其子包的任意接口或类的任意方法
+            execution(* test.*.*(..))
+        6.执行可能抛出IOException异常的方法
+    -->
+
+    <bean id="person_aspect2" class="net.imwork.zhanlong.myAspectJ2.Person">
+        <property name="name" value="zhanlong"/>
+    </bean>
+
+    <bean id="myAspectJ2" class="net.imwork.zhanlong.myAspectJ2.MyAspectJ"/>
+
+    <aop:config>
+        <aop:aspect id="aopAspect" ref="myAspectJ2">
+            <aop:pointcut id="pointcut" expression="execution(public * * (..))"/>
+            <aop:before method="beforeExecute" pointcut="execution(public * execute(..)) and
+                                            target(net.imwork.zhanlong.myAspectJ2.Person)"/>
+            <aop:after method="afterExecute" pointcut-ref="pointcut"/>
+            <aop:around method="myOperation" pointcut-ref="pointcut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
