@@ -2,8 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd"
-       xmlns:aop="http://www.springframework.org/schema/aop">
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="serviceTarget" class="net.imwork.zhanlong.spring8.OperationServiceImpl"/>
     <bean id="authInterceptor" class="net.imwork.zhanlong.spring8.AuthInterceptor">
@@ -26,5 +25,4 @@
     </bean>
 
 
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>

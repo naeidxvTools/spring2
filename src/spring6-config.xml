@@ -13,6 +13,8 @@
     <bean id="afterReturningAdvice" class="net.imwork.zhanlong.spring6.MyAfterReturningAdvice"/>
     <bean id="aroundAdvice" class="net.imwork.zhanlong.spring6.MyAroundAdvice"/>
 
+
+
     <bean id="person" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="proxyInterfaces" value="net.imwork.zhanlong.spring6.Person"/>
         <property name="target" ref="personTarget"/>
@@ -36,5 +38,4 @@
         <property name="proxyTargetClass" value="true"/>
     </bean>
 
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>
