@@ -7,6 +7,7 @@ import java.util.*;
  */
 public class Chinese implements Person
 {
+    // 注意：spring注入，这里不需要new
     private List list = new ArrayList();
     private Map map = new HashMap();
     private Set set = new HashSet();
