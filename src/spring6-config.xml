@@ -13,11 +13,19 @@
     <bean id="afterReturningAdvice" class="net.imwork.zhanlong.spring6.MyAfterReturningAdvice"/>
     <bean id="aroundAdvice" class="net.imwork.zhanlong.spring6.MyAroundAdvice"/>
 
-
-
+    <!--  注意这里生成的对象person是ProxyFactoryBean创建的Person的代理对象；-->
+    <!--  如果想获得ProxyFactoryBean对象,则在getBean("&person");-->
     <bean id="person" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="proxyInterfaces" value="net.imwork.zhanlong.spring6.Person"/>
-        <property name="target" ref="personTarget"/>
+        <property name="target">
+            <bean class="net.imwork.zhanlong.spring6.PersonImpl">
+                <property name="name" value="张三"/>
+                <property name="address" value="北京"/>
+            </bean>
+        </property>
+        <!--  下面的target和上面的target效果一样  -->
+<!--        <property name="target" ref="personTarget"/> -->
+
         <property name="interceptorNames">
             <list>
                 <value>beforeAdvice</value><!--前置通知-->
@@ -31,9 +39,7 @@
     <bean id="transactionManager" class="net.imwork.zhanlong.spring6.TransactionManager"/>
 
     <bean id="dog" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="interceptorNames">
-            <value>transactionManager</value>
-        </property>
+        <property name="interceptorNames" value="transactionManager"/>
         <property name="target" ref="dogTarget"/>
         <property name="proxyTargetClass" value="true"/>
     </bean>

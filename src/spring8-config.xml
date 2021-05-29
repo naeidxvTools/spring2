@@ -4,14 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="serviceTarget" class="net.imwork.zhanlong.spring8.OperationServiceImpl"/>
+    <bean id="serviceTarget8" class="net.imwork.zhanlong.spring8.OperationServiceImpl"/>
     <bean id="authInterceptor" class="net.imwork.zhanlong.spring8.AuthInterceptor">
-        <property name="name" value="admin"/>
+        <property name="name" value="user"/>
     </bean>
 
     <bean id="service" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="proxyInterfaces" value="net.imwork.zhanlong.spring8.OperationService"/>
-        <property name="target" ref="serviceTarget"/>
+        <property name="target" ref="serviceTarget8"/>
         <property name="interceptorNames">
             <list>
                 <value>authInterceptor</value>

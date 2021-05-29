@@ -4,9 +4,9 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 /**
+ * 注意：这里的MethodInterceptor方法和CgLib中的MethodInterceptor不同
  * @author Administrator
  */
-@SuppressWarnings("all")
 public class AuthInterceptor implements MethodInterceptor
 {
     private String username;

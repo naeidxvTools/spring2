@@ -11,6 +11,10 @@ public class TransactionManager implements ThrowsAdvice
 {
     /**
      * 注意：-->这里的文件名必须是：afterThrowing
+     *      public void afterThrowing(Exception ex)
+     *      public void afterThrowing(RemoteException)
+     *      public void afterThrowing(Method method, Object[] args, Object target, Exception ex)
+     *      public void afterThrowing(Method method, Object[] args, Object target, ServletException ex)
      * @param method
      * @param args
      * @param target

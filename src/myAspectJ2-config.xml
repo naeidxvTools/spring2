@@ -38,7 +38,7 @@
 
     <aop:config>
         <aop:aspect id="aopAspect" ref="myAspectJ2">
-            <aop:pointcut id="pointcut" expression="execution(public * * (..))"/>
+            <aop:pointcut id="pointcut" expression="execution(public * net.imwork.zhanlong.myAspectJ2.* (..))"/>
             <aop:before method="beforeExecute" pointcut="execution(public * execute(..)) and
                                             target(net.imwork.zhanlong.myAspectJ2.Person)"/>
             <aop:after method="afterExecute" pointcut-ref="pointcut"/>

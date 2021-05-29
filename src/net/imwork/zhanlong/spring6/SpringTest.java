@@ -25,7 +25,6 @@ public class SpringTest
             dog.remove();
         } catch (Exception e)
         {
-            e.printStackTrace();
         }
 
         try
@@ -33,7 +32,6 @@ public class SpringTest
             dog.save();
         } catch (SQLException e)
         {
-            e.printStackTrace();
         }
 
     }
