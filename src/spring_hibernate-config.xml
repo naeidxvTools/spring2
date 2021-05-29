@@ -5,7 +5,7 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--  1.第一步配置数据源  -->
-    <!--  1)DBCP2数据源:DBCP的配置依赖于2个jar包commons-dbcp2-2.5.0.jar，commons-pool2-2.4.2.jar-->
+    <!--  1-1)DBCP2数据源:DBCP的配置依赖于2个jar包commons-dbcp2-2.5.0.jar，commons-pool2-2.4.2.jar-->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/hibernate?serverTimezone=GMT&amp;useSSL=true"/>
@@ -13,11 +13,19 @@
         <property name="password" value="root"/>
     </bean>
 
+    <!--  1-2）DBCP数据源:DBCP的配置依赖于2个jar包commons-dbcp.jar，commons-pool.jar
+    <bean id="dataSource3" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/hibernate?serverTimezone=GMT&amp;useSSL=true"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+    -->
 
     <!--  2)spring自带的数据源
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/struts2_spring5_hibernate5?serverTimezone=GMT&amp;useSSL=true"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/hibernate?serverTimezone=GMT&amp;useSSL=true"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
     </bean>
@@ -26,7 +34,7 @@
     <!--  3)C3P0数据源
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/struts2_spring5_hibernate5?serverTimezone=GMT&amp;useSSL=true"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hibernate?serverTimezone=GMT&amp;useSSL=true"/>
         <property name="user" value="root"/>
         <property name="password" value="root"/>
     </bean>
@@ -60,13 +68,13 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <!--  4.第四步配置service （没有配置事务的service）-->
+    <!--  4.第四步配置service （没有配置事务的service）
     <bean id="personService" class="net.imwork.zhanlong.spring_hibernate.service.impl.PersonServiceImpl">
         <property name="personDao" ref="personDao"/>
     </bean>
+    -->
 
-
-    <!--  4.第四步配置service （配置事务的service）
+    <!--  4.第四步配置service （配置事务的service）-->
     <bean id="personService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
         <property name="target">
             <bean class="net.imwork.zhanlong.spring_hibernate.service.impl.PersonServiceImpl">
@@ -82,6 +90,6 @@
             </props>
         </property>
     </bean>
-    -->
+
 
 </beans>
